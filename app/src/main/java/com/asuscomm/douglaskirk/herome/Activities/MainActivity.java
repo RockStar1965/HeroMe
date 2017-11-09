@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements
     private static int gameType = 0;
     private static int gameLevel = constants.startGameLevel();
 
-
     private static int[] powerList = new int[constants.maxGameLevel()];
     private static int[] powerSelected = new int[constants.maxGameLevel()];
     private static int[] gameList = new int[constants.numberRC() * constants.numberRC()];
@@ -189,16 +188,19 @@ public class MainActivity extends AppCompatActivity implements
         final float densityValue = this.getResources().getDisplayMetrics().density;
         final float widthPixelsValue = this.getResources().getDisplayMetrics().widthPixels;
 
-        final int newMenuWidth = (int) ( this.getResources().getDisplayMetrics().widthPixels * 100 / 350 );
+        // Set the width slightly smaller than 1/3 to give a margin.
+        final int newMenuWidth = (int) ( this.getResources().getDisplayMetrics().widthPixels * 2 / 7 );
+
+        // Total bottom bar height is 2 x Button Height + 1 Margin. 9 / 40 in total screen height.
         final int newMenuHeight = (int) ( this.getResources().getDisplayMetrics().widthPixels * 1 / 10 );
         final int newMenuMargin = (int) ( this.getResources().getDisplayMetrics().widthPixels * 1 / 40 );
 
-        final int newImageTitleLayoutWidth  = (int) ( this.getResources().getDisplayMetrics().widthPixels * 2 / 3 );
-        final int newImageTitleLayoutHeight = newImageTitleLayoutWidth / 5;
+
+        final int newImageTitleLayoutHeight  = (int) ( this.getResources().getDisplayMetrics().widthPixels * 2 / 15 );
 
         // Five icons per larger image
-        final int newGameLevelHeight = newImageTitleLayoutHeight / 5;
-        final int newGameLevelWidth = newGameLevelHeight;
+        final int gameLevelHeight = newImageTitleLayoutHeight / 5;
+        final int gameLevelWidth = gameLevelHeight;
 
         final float newTextSize  =  (float)( this.getResources().getDisplayMetrics().widthPixels / densityValue/ 25 );
 
@@ -241,46 +243,31 @@ public class MainActivity extends AppCompatActivity implements
         newLayout = (ConstraintLayout)findViewById(R.id.titleConstraintLayout);
         newSet.clone(newLayout);
 
+        // Restrict the height and the width will autosize
         newSet.constrainHeight(R.id.gameTitleImage, newImageTitleLayoutHeight);
-        //set1.constrainWidth(R.id.gameTitleImage, newImageTitleLayoutWidth);
-        newSet.constrainHeight(R.id.gameLevelImage1, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage1, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage2, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage2, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage3, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage3, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage4, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage4, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage5, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage5, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage6, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage6, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage7, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage7, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage8, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage8, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage9, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage9, newGameLevelWidth);
-        newSet.constrainHeight(R.id.gameLevelImage10, newGameLevelHeight);
-        newSet.constrainWidth(R.id.gameLevelImage10, newGameLevelWidth);
+
+        newSet.constrainHeight(R.id.gameLevelImage1, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage1, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage2, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage2, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage3, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage3, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage4, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage4, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage5, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage5, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage6, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage6, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage7, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage7, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage8, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage8, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage9, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage9, gameLevelWidth);
+        newSet.constrainHeight(R.id.gameLevelImage10, gameLevelHeight);
+        newSet.constrainWidth(R.id.gameLevelImage10, gameLevelWidth);
         newSet.applyTo(newLayout);
     }
-
-    // Step 0 Login or Register
-    public void loadLoginFragment() {
-        mainMenuInit();
-        FragmentManager manager = getSupportFragmentManager();
-        if (manager.getBackStackEntryCount() > 0) {
-            FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
-            manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        }
-        //getSupportFragmentManager().beginTransaction();
-        LoginFragment loginFragment = new LoginFragment();
-        loginFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).commit();
-    }
-
-
 
    // TODO
 
@@ -303,8 +290,6 @@ public class MainActivity extends AppCompatActivity implements
         bundle.putLong("timeList", timeList);
      }
 
-
-
     @Override
     public void onTestButtonClick(int[] powerSelectedNew, long newTimeTest, boolean testButtonEnable ) {
         if (testButtonEnable) {
@@ -322,41 +307,6 @@ public class MainActivity extends AppCompatActivity implements
             menuTestBtn.getBackground().setAlpha(128);
         }
          menuTestBtn.setEnabled(testButtonEnable);
-    }
-
-
-     // Step 2 Update teh screen with random icons, retrieve the gameList
-    public void loadSearchFragment() {
-        SearchFragment searchFragment = new SearchFragment();
-        searchFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, searchFragment).commit();
-    }
-
-
-    public void loadResultsFragment() {
-        ResultsFragment gameResultsFragment = new ResultsFragment();
-        gameResultsFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, gameResultsFragment).commit();
-    }
-
-
-    public void initLeaderFragment() {
-        if (online){
-            String param1 = "http://DouglasKirk.asuscomm.com/task_manager/v1/index.php/highscore";
-            String param2 = "game=" + Integer.toString(gameType);
-            param2 += "&level=" + Integer.toString(gameLevel) + "&source=loadLeaderFragment";
-            String param3 = restApiKey;
-            new PostClass(this).execute(param1, param2, param3);
-        } else {
-            loadLeaderFragment();
-        }
-    }
-
-
-    public void loadLeaderFragment(){
-        LeaderFragment leaderFragment = new LeaderFragment();
-        leaderFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, leaderFragment).commit();
     }
 
     private int findIcon(int[] source, int icon) {
@@ -509,99 +459,6 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 
-    public void setResponse(String data) {
-        String restApi = "";
-        bundle.putString("restApiMessage", null);
-
-        String[] dataParts = data.replaceAll( "[\"{}]", "").split(",");
-
-        if ((dataParts[0].equals("error:false")) && (dataParts.length > 1)) {
-            for (String param : dataParts) {
-                String[] subParts = param.split(":");
-                if ((subParts[0].equals("apikey")) && (subParts.length > 1)) {
-                    restApiKey = subParts[1];
-
-                } else if ((subParts[0].equals("rank")) && (subParts.length > 1)) {
-                    powerRank = subParts[1];
-                    bundle.putString("powerRank", powerRank);
-
-                } else if ((subParts[0].equals("highscore_all")) && (subParts.length > 1)) {
-                    textHighScore = subParts[1].split("#");
-                    bundle.putStringArray("textHighScore", textHighScore);
-
-                } else if ((subParts[0].equals("highscore_user")) && (subParts.length > 1)) {
-                    textUserHighScore = subParts[1].split("#");
-                    bundle.putStringArray("textUserHighScore", textUserHighScore);
-
-                } else if ((subParts[0].equals("name")) && (subParts.length > 1)) {
-                    textName = subParts[1];
-                    bundle.putString("textName", textName);
-
-                } else if ((subParts[0].equals("username")) && (subParts.length > 1)) {
-                    textUsername = subParts[1];
-                    bundle.putString("textUsername", textUsername);
-
-                } else if ((subParts[0].equals("rest")) && (subParts.length > 1)) {
-                    restApi = subParts[1];
-
-                } else if ((subParts[0].equals("source")) && (subParts.length > 1)) {
-                    restApiSource = subParts[1];
-
-                } else if ((subParts[0].equals("message")) && (subParts.length > 1)) {
-                    restApiMessage = subParts[1];
-                    bundle.putString("restApiMessage", restApiMessage);
-                }
-            }
-
-            if (restApiSource.equals("loadResultsFragment")) {
-                menuType = MENU_RESULTS;
-                mainMenuInit();
-                loadResultsFragment();
-            } else if (restApiSource.equals("initLeaderFragment")) {
-                progress.dismiss();
-                menuType = MENU_LEADER;
-                mainMenuInit();
-                initLeaderFragment();
-            } else if (restApiSource.equals("loadLeaderFragment")) {
-                menuType = MENU_LEADER;
-                mainMenuInit();
-                loadLeaderFragment();
-            } else if (restApiSource.equals("loadSearchFragment")) {
-                menuType = MENU_SEARCH;
-                mainMenuInit();
-                loadSearchFragment();
-            }
-
-        } else {
-            for (String param : dataParts) {
-                String[] subParts = param.split(":");
-                if ((subParts[0].equals("rest")) && (subParts.length > 1)) {
-                    restApi = subParts[1];
-                    bundle.putString("restApi", restApi);
-
-                } else if ((subParts[0].equals("message")) && (subParts.length > 1)) {
-                    restApiMessage = subParts[1];
-                    bundle.putString("restApiMessage", restApiMessage);
-
-                } else if ((subParts[0].equals("source")) && (subParts.length > 1))  {
-                    restApiSource = subParts[1];
-                    bundle.putString("restApiSource", restApiSource);
-                }
-            }
-
-            if (restApi.equals("login") || restApi.equals("register")) {
-                menuType = MENU_LOGIN;
-                mainMenuInit();
-                loadLoginFragment();
-
-                //textViewExtra.setText("Error" );
-            } else if (restApi.equals("rest:post-highscore")) {
-                // TODO Figure out what to do lol
-                online = false;
-                loadResultsFragment();
-            }
-        }
-    }
 
 
     private void mainMenuInit( ) {
@@ -704,7 +561,7 @@ public class MainActivity extends AppCompatActivity implements
                 menuLeaderBtn.setEnabled(true);
                 menuLeaderBtn.getBackground().setAlpha(255);
 
-                menuExitBtn.setText("Exit");
+                menuExitBtn.setText("Abort");
                 menuExitBtn.setEnabled(true);
                 menuExitBtn.getBackground().setAlpha(255);
 
@@ -731,7 +588,7 @@ public class MainActivity extends AppCompatActivity implements
                 menuLeaderBtn.setEnabled(true);
                 menuLeaderBtn.getBackground().setAlpha(255);
 
-                menuExitBtn.setText("Exit");
+                menuExitBtn.setText("Abort");
                 menuExitBtn.setEnabled(true);
                 menuExitBtn.getBackground().setAlpha(255);
 
@@ -781,8 +638,6 @@ public class MainActivity extends AppCompatActivity implements
             // Offline
             online = false;
             bundle.putBoolean("online", online);
-            menuType = MENU_SEARCH;
-            mainMenuInit();
             loadSearchFragment();
 
         } else {
@@ -796,16 +651,19 @@ public class MainActivity extends AppCompatActivity implements
     // This button doubles as the Register New User button
     public void mainMenuLevelDownBtn (View view) {
         if (menuType == MENU_LOGIN) {
-            menuType = MENU_REGISTER;
+            restApiMessage = null;
+            bundle.putString("restApiMessage", restApiMessage);
             restApiSource = "register";
             bundle.putString("restApiSource", restApiSource);
-            bundle.putString("restApiMessage", null);
+            menuType = MENU_REGISTER;
             loadLoginFragment();
+
         } else if (menuType == MENU_REGISTER) {
             restApiSource = "login";
             bundle.putString("restApiSource", restApiSource);
             menuType = MENU_LOGIN;
             loadLoginFragment();
+
         } else {
              if (gameLevel > constants.minGameLevel()) {
                 gameLevel--;
@@ -916,24 +774,21 @@ public class MainActivity extends AppCompatActivity implements
             case MENU_RESULTS:
             case MENU_LEADER:
             case MENU_ABOUT:
-                menuType = MENU_SEARCH;
-                mainMenuInit();
-
-                if (manager.getBackStackEntryCount() > 0) {
-                    FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
-                    manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }
-                menuType = MENU_SEARCH;
-                mainMenuInit();
                 loadSearchFragment();
                 break;
         }
     }
 
     public void mainMenuLeaderBtn (View view) {
-        menuType = MENU_LEADER;
-        mainMenuInit();
-        initLeaderFragment();
+        if (online){
+            String param1 = "http://DouglasKirk.asuscomm.com/task_manager/v1/index.php/highscore";
+            String param2 = "game=" + Integer.toString(gameType);
+            param2 += "&level=" + Integer.toString(gameLevel) + "&source=loadLeaderFragment";
+            String param3 = restApiKey;
+            new PostClass(this).execute(param1, param2, param3);
+        } else {
+            loadLeaderFragment();
+        }
     }
 
     public void mainMenuExitBtn (View view) {
@@ -943,20 +798,15 @@ public class MainActivity extends AppCompatActivity implements
             } else {
                 this.finishAffinity();
             }
+        } else if (menuType == MENU_LIST || menuType == MENU_TEST) {
+            loadSearchFragment();
         } else {
+            restApiMessage = null;
+            bundle.putString("restApiMessage", restApiMessage);
+            restApiSource = "login";
+            bundle.putString("restApiSource", restApiSource);
             menuType = MENU_LOGIN;
-                restApiSource = "login";
-                restApiMessage = null;
-                bundle.putString("restApiSource", restApiSource);
-                bundle.putString("restApiMessage", restApiMessage);
-                loadLoginFragment();
-
-
-            mainMenuInit();
-            //getSupportFragmentManager().beginTransaction();
-            LoginFragment loginFragment = new LoginFragment();
-            loginFragment.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).commit();
+            loadLoginFragment();
         }
     }
 
@@ -964,7 +814,6 @@ public class MainActivity extends AppCompatActivity implements
         menuType = MENU_ABOUT;
         mainMenuInit();
         AboutFragment aboutFragment = new AboutFragment();
-        //aboutFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, aboutFragment).commit();
     }
 
@@ -1091,6 +940,116 @@ public class MainActivity extends AppCompatActivity implements
         }
 
     }
+
+
+    public void setResponse(String data) {
+        String restApi = "";
+        String Error = "";
+        bundle.putString("restApiMessage", null);
+
+        String[] dataParts = data.replaceAll( "[\"{}]", "").split(",");
+
+        if ( dataParts.length > 1 ) {
+            for (String param : dataParts) {
+                String[] subParts = param.split(":");
+                if ((subParts[0].equals("error")) && (subParts.length > 1)) {
+                    Error = subParts[1];
+                } else if ((subParts[0].equals("apikey")) && (subParts.length > 1)) {
+                        restApiKey = subParts[1];
+                } else if ((subParts[0].equals("rank")) && (subParts.length > 1)) {
+                    powerRank = subParts[1];
+                    bundle.putString("powerRank", powerRank);
+                } else if ((subParts[0].equals("highscore_all")) && (subParts.length > 1)) {
+                    textHighScore = subParts[1].split("#");
+                    bundle.putStringArray("textHighScore", textHighScore);
+                } else if ((subParts[0].equals("highscore_user")) && (subParts.length > 1)) {
+                    textUserHighScore = subParts[1].split("#");
+                    bundle.putStringArray("textUserHighScore", textUserHighScore);
+                } else if ((subParts[0].equals("name")) && (subParts.length > 1)) {
+                    textName = subParts[1];
+                    bundle.putString("textName", textName);
+                } else if ((subParts[0].equals("username")) && (subParts.length > 1)) {
+                    textUsername = subParts[1];
+                    bundle.putString("textUsername", textUsername);
+                } else if ((subParts[0].equals("rest")) && (subParts.length > 1)) {
+                    restApi = subParts[1];
+                    bundle.putString("restApi", restApi);
+                } else if ((subParts[0].equals("source")) && (subParts.length > 1)) {
+                    restApiSource = subParts[1];
+                } else if ((subParts[0].equals("message")) && (subParts.length > 1)) {
+                    restApiMessage = subParts[1];
+                    bundle.putString("restApiMessage", restApiMessage);
+                }
+            }
+
+            if (Error.equals("false")) {
+                if (restApiSource.equals("loadResultsFragment")) {
+                    loadResultsFragment();
+                } else if (restApiSource.equals("loadLeaderFragment")) {
+                    loadLeaderFragment();
+                } else if (restApiSource.equals("loadSearchFragment")) {
+                    loadSearchFragment();
+                }
+            } else {
+                restApiSource = "login";
+                bundle.putString("restApiSource", restApiSource);
+
+                if (restApiMessage == null) {
+                    restApiMessage = "Unknown Error: -> " + data.toString();
+                }
+                bundle.putString("restApiMessage", restApiMessage);
+                menuType = MENU_LOGIN;
+                loadLoginFragment();
+            }
+        } else {
+            restApiSource = "login";
+            bundle.putString("restApiSource", restApiSource);
+            restApiMessage = "Unknown Error: -> " + data.toString();
+            bundle.putString("restApiMessage", restApiMessage);
+            menuType = MENU_LOGIN;
+            loadLoginFragment();
+        }
+    }
+
+    // Step 2 Update teh screen with random icons, retrieve the gameList
+    public void loadSearchFragment() {
+        menuType = MENU_SEARCH;
+        mainMenuInit();
+        SearchFragment searchFragment = new SearchFragment();
+        searchFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, searchFragment).commit();
+    }
+
+    public void loadResultsFragment() {
+        menuType = MENU_RESULTS;
+        mainMenuInit();
+        ResultsFragment gameResultsFragment = new ResultsFragment();
+        gameResultsFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, gameResultsFragment).commit();
+    }
+
+    public void loadLeaderFragment(){
+        menuType = MENU_LEADER;
+        mainMenuInit();
+        LeaderFragment leaderFragment = new LeaderFragment();
+        leaderFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, leaderFragment).commit();
+    }
+
+    // Step 0 Login or Register
+    public void loadLoginFragment() {
+        mainMenuInit();
+        FragmentManager manager = getSupportFragmentManager();
+        if (manager.getBackStackEntryCount() > 0) {
+            FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
+            manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+        //getSupportFragmentManager().beginTransaction();
+        LoginFragment loginFragment = new LoginFragment();
+        loginFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, loginFragment).commit();
+    }
+
 
 
     @Override

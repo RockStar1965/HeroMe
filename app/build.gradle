@@ -7,7 +7,7 @@ android {
         applicationId "com.asuscomm.douglaskirk.herome"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 9
+        versionCode 10
         versionName '1.00'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
