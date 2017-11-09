@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/hero_bg_gradient"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#253748"
+        android:gravity="center_vertical|center_horizontal"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/titleConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            tools:layout_editor_absoluteX="16dp">
+
+
+            <ImageView
+                android:id="@+id/gameLevelImage1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toStartOf="@+id/gameLevelImage6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toStartOf="@+id/gameLevelImage7"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage1" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toStartOf="@+id/gameLevelImage8"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage2" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toStartOf="@+id/gameLevelImage9"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage3" />
+
+
+            <ImageView
+                android:id="@+id/gameTitleImage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/topbannerbar"
+                app:layout_constraintEnd_toEndOf="@+id/gameLevelImage8"
+                app:layout_constraintHorizontal_bias="0.382"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="1dp" />
+
+
+            <ImageView
+                android:id="@+id/gameLevelImage6"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage7"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage6" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage8"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage7" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage9"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage8" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage10"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage9" />
+
+            <ImageView
+                android:id="@+id/gameLevelImage5"
+                android:layout_width="10dp"
+                android:layout_height="8dp"
+                android:adjustViewBounds="false"
+                android:src="@drawable/itemselectedholder"
+                app:layout_constraintEnd_toStartOf="@+id/gameLevelImage10"
+                app:layout_constraintTop_toBottomOf="@+id/gameLevelImage4" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:context=".activities.MainActivity">
+
+    </FrameLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/menuConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/menuLevelDown1Btn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/hero_solid_button"
+            android:backgroundTint="#FAC740"
+            android:onClick="mainMenuLevelDownBtn"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:text="Level Down"
+            android:textColor="#10161D"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/menuLeaderBtn"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/menuTestBtn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/hero_solid_button"
+            android:backgroundTint="#FAC740"
+            android:onClick="mainMenuTestBtn"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:text="Test"
+            android:textColor="#10161D"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/menuExitBtn"
+            app:layout_constraintEnd_toStartOf="@+id/menuLevelUpBtn"
+            app:layout_constraintStart_toEndOf="@+id/menuLevelDown1Btn" />
+
+        <Button
+            android:id="@+id/menuLevelUpBtn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/hero_solid_button"
+            android:backgroundTint="#FAC740"
+            android:onClick="mainMenuLevelUpBtn"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:text="Level Up"
+            android:textColor="#10161D"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/menuAboutBtn"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/menuLeaderBtn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/hero_solid_button"
+            android:backgroundTint="#FAC740"
+            android:onClick="mainMenuLeaderBtn"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:text="Highscore"
+            android:textColor="#10161D"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/menuExitBtn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/hero_solid_button"
+            android:backgroundTint="#FAC740"
+            android:onClick="mainMenuExitBtn"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:text="Exit"
+            android:textColor="#10161D"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/menuAboutBtn"
+            app:layout_constraintStart_toEndOf="@+id/menuLeaderBtn" />
+
+        <Button
+            android:id="@+id/menuAboutBtn"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/hero_solid_button"
+            android:backgroundTint="#FAC740"
+            android:onClick="mainMenuAboutBtn"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:text="About"
+            android:textColor="#10161D"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
